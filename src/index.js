@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import WebFontLoader from 'webfontloader';
+
+WebFontLoader.load({
+    google: {
+        families: ['Roboto:300,400,500,700', 'Material Icons'],
+    },
+});
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App />,
   document.getElementById('root')
 );
 
