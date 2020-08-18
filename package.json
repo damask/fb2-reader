@@ -11,7 +11,8 @@
     "react-scripts": "3.4.3",
     "react-md": "1.16.1",
     "lorem-ipsum": "^2.0.3",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "idb": "^5.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
