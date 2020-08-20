@@ -1,6 +1,7 @@
 import React from 'react';
 import {PureComponent} from "react";
 import {FontIcon} from "react-md";
+import { Button, SVGIcon } from 'react-md';
 import {Fb2Parser} from "../fb2Parser";
 
 export class BookImporter extends PureComponent {
@@ -8,7 +9,9 @@ export class BookImporter extends PureComponent {
         super();
         this.state = {
             loading: false
-        }
+        };
+
+        this.fileInput = React.createRef();
     }
 
     change = (event) => {
@@ -42,8 +45,8 @@ export class BookImporter extends PureComponent {
     render() {
         return (
             <div>
-                <FontIcon>plus</FontIcon>
-                <input type="file" id="file-selector" onChange={this.change}/>
+                <Button floating primary mini onClick={() => this.fileInput.current.click()}>add</Button>
+                <input type="file" id="file-selector" onChange={this.change} ref={this.fileInput}/>
             </div>
         );
     }

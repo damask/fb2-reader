@@ -11442,3 +11442,7 @@ html {
 .rmd-button-unstyled:not(:disabled):hover {
   cursor: pointer
 }
+
+#file-selector {
+  display: none;
+}
