@@ -22,13 +22,6 @@ export class BookList extends PureComponent {
             book: null
         };
 
-        Events.on(Events.DB_READY).do(async () => {
-                this.state.books = await getAllBooks();
-                this.forceUpdate();
-        }
-
-        );
-
         Events.on(Events.BOOK_ADDING).do(event => {
             this.state.adding = true;
             this.state.book = event.detail.book;
@@ -40,6 +33,12 @@ export class BookList extends PureComponent {
             this.state.adding = false;
         });
     }
+
+    async componentDidMount() {
+        this.state.books = await getAllBooks();
+        this.forceUpdate();
+    }
+
     render() {
         const style = { maxWidth: 400 };
         const { books } = this.state;

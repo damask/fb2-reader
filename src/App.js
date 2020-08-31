@@ -87,6 +87,7 @@ export default class App extends PureComponent {
                 <BookList></BookList>
               }
 
+              { (page !== 'Books') &&
               <section className="md-text-container md-cell md-cell--12">
                 <p>{loremIpsum({ units: 'paragraphs', count: 1 })}</p>
                 <p>{loremIpsum({ units: 'paragraphs', count: 1 })}</p>
@@ -95,6 +96,8 @@ export default class App extends PureComponent {
                 <p>{loremIpsum({ units: 'paragraphs', count: 1 })}</p>
                 <p>{loremIpsum({ units: 'paragraphs', count: 1 })}</p>
               </section>
+              }
+
             </NavigationDrawer>
           </DialogContainer>
         </div>

@@ -1,5 +1,4 @@
 import {openDB} from 'idb';
-import * as Events from "./events";
 
 const BOOKS = 'books';
 const SECTIONS = 'sections';
@@ -7,11 +6,7 @@ const ELEMENTS = 'elements';
 
 let db;
 
-function buf2hex(buffer) { // buffer is an ArrayBuffer
-    return Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
-}
-
-openDB('fb2-reader', 1, {
+const openedDb = openDB('fb2-reader', 1, {
     upgrade(db) {
         // Create a store of objects
         const books = db.createObjectStore(BOOKS, {
@@ -30,11 +25,9 @@ openDB('fb2-reader', 1, {
         elements.createIndex('sectionId', 'sectionId');
 
     }
-}).then(x => {
-    db = x;
-    Events.dispatch(Events.DB_READY);
 });
 
+openedDb.then(x => db = x);
 
 export function addBook(book) {
     return db.add(BOOKS, book);
@@ -53,5 +46,8 @@ export function addElement(element) {
 }
 
 export function getAllBooks() {
-    return db.getAll(BOOKS);
+    if (db) {
+        return db.getAll(BOOKS);
+    }
+    return openedDb.then(() => db.getAll(BOOKS));
 }
