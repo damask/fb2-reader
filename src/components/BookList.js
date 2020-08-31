@@ -11,6 +11,7 @@ import {
     CardText,
     CardTitle,
 } from 'react-md';
+import './BookList.css';
 
 export class BookList extends PureComponent {
     constructor() {
@@ -40,14 +41,14 @@ export class BookList extends PureComponent {
     }
 
     render() {
-        const style = { maxWidth: 400 };
         const { books } = this.state;
         return (
             <div>
-                <BookImporter></BookImporter>
+                <BookImporter></BookImporter><br/>
+                <div id="list">
                 {
                     books.map(book =>
-                        <Card style={style}>
+                        <Card>
                             <CardTitle
                                 title={book.title}
                                 subtitle={book.author}
@@ -62,7 +63,7 @@ export class BookList extends PureComponent {
                             </CardText>
                         </Card>
                     )
-                }
+                }</div>
             </div>
         );
     }

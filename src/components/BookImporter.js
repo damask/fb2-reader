@@ -44,7 +44,7 @@ export class BookImporter extends PureComponent {
     render() {
         return (
             <div>
-                <Button floating primary mini onClick={() => this.fileInput.current.click()}>add</Button>
+                <Button floating primary style={{height: 32, width: 32, padding: 6}} onClick={() => this.fileInput.current.click()}>add</Button>
                 <input type="file" id="file-selector" onChange={this.change} ref={this.fileInput}/>
             </div>
         );
