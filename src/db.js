@@ -1,4 +1,5 @@
 import {openDB} from 'idb';
+import * as Events from "./events";
 
 const BOOKS = 'books';
 const SECTIONS = 'sections';
@@ -29,7 +30,10 @@ openDB('fb2-reader', 1, {
         elements.createIndex('sectionId', 'sectionId');
 
     }
-}).then(x => db = x);
+}).then(x => {
+    db = x;
+    Events.dispatch(Events.DB_READY);
+});
 
 
 export function addBook(book) {

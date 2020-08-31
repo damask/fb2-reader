@@ -1,8 +1,7 @@
-import React from 'react';
-import {PureComponent} from "react";
-import {FontIcon} from "react-md";
-import { Button, SVGIcon } from 'react-md';
+import React, {PureComponent} from 'react';
+import {Button} from "react-md";
 import {Fb2Parser} from "../fb2Parser";
+import * as Events from "../events";
 
 export class BookImporter extends PureComponent {
     constructor() {
@@ -26,13 +25,13 @@ export class BookImporter extends PureComponent {
                 const book = await parser.parseDescription();
 
                 if (parser.isAlreadyAdded) {
-                    // Events.dispatch(Events.BOOK_ALREADY_ADDED, {book});
+                    Events.dispatch(Events.BOOK_ALREADY_ADDED, {book});
                     return;
                 }
 
-                // Events.dispatch(Events.BOOK_ADDING, {book});
+                Events.dispatch(Events.BOOK_ADDING, {book});
                 await parser.parseBody();
-                // Events.dispatch(Events.BOOK_ADDED, {book});
+                Events.dispatch(Events.BOOK_ADDED, {book});
             } catch (e) {
                 console.error('error when parsing', e);
             } finally {
