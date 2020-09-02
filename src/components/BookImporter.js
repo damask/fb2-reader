@@ -18,7 +18,6 @@ export class BookImporter extends PureComponent {
         this.state.loading = true;
         const reader = new FileReader();
         reader.addEventListener('load', async event => {
-            debugger
             try {
                 const xml = event.target.result;
                 const parser = new Fb2Parser(xml);

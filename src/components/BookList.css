@@ -8,3 +8,34 @@ div.md-card {
     max-width: 400px;
     flex: 1
 }
+
+div.loading div.md-card-title {
+    filter: blur(1px);
+}
+
+div.loading .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+div.loading .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0px;
+    border-radius: 70%;
+    border: 6px solid #03a9f4;
+    border-color: #03a9f4 transparent #03a9f4 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -27,11 +27,15 @@ export class BookList extends PureComponent {
             this.state.adding = true;
             this.state.book = event.detail.book;
             this.forceUpdate();
+            console.log(Date.now());
         });
-        Events.on(Events.BOOK_ADDED).do(event => {
+        Events.on(Events.BOOK_ADDED).do(async event => {
             this.state.books.push(event.detail.book);
             this.state.book = null;
+            this.state.books = await getAllBooks();
             this.state.adding = false;
+            this.forceUpdate();
+            console.log(Date.now());
         });
     }
 
@@ -41,14 +45,34 @@ export class BookList extends PureComponent {
     }
 
     render() {
-        const { books } = this.state;
+        let { books, book, adding } = this.state;
         return (
             <div>
                 <BookImporter></BookImporter><br/>
                 <div id="list">
-                {
+                    {
+                        adding &&
+                        <Card key={book.title} className="loading">
+                            <CardTitle title={book.title}
+                                       subtitle={book.author}
+                                       avatar={<Avatar src={book.image} role="presentation"/>}
+                            />
+                            <CardActions expander>
+                                <Button flat>
+                                    <div className="lds-dual-ring"></div>
+                                </Button>
+                                <Button flat>
+                                    Loading...
+                                </Button>
+                            </CardActions>
+                            <CardText expandable expanded={true}>
+                                {book.annotation}
+                            </CardText>
+                        </Card>
+                    }
+                    {
                     books.map(book =>
-                        <Card>
+                        <Card key={book.title}>
                             <CardTitle
                                 title={book.title}
                                 subtitle={book.author}

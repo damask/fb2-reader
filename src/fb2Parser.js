@@ -27,7 +27,7 @@ export class Fb2Parser {
         for (let i = 0; i < elements.length; ++i) {
             const element = elements[i];
             if (element.tagName === 'section') {
-                await this.parseSection(section, id, i);
+                await this.parseSection(element, id, i);
             } else {
                 await addElement({tag: element.tagName, content: element.innerHTML, sectionId: id, ordinal: i })
             }
