@@ -27,7 +27,6 @@ export class BookList extends PureComponent {
             this.state.adding = true;
             this.state.book = event.detail.book;
             this.forceUpdate();
-            console.log(Date.now());
         });
         Events.on(Events.BOOK_ADDED).do(async event => {
             this.state.books.push(event.detail.book);
@@ -35,7 +34,9 @@ export class BookList extends PureComponent {
             this.state.books = await getAllBooks();
             this.state.adding = false;
             this.forceUpdate();
-            console.log(Date.now());
+        });
+        Events.on(Events.BOOK_ALREADY_ADDED).do(book => {
+            //TODO Toast
         });
     }
 
