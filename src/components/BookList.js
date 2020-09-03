@@ -42,6 +42,10 @@ export class BookList extends PureComponent {
         this.forceUpdate();
     }
 
+    readBook = book => {
+        localStorage.setItem('READ_BOOK', book.hashHex);
+    }
+
     render() {
         let { books, book, adding } = this.state;
         return (
@@ -77,7 +81,7 @@ export class BookList extends PureComponent {
                                 avatar={<Avatar src={book.image} role="presentation" />}
                             />
                             <CardActions expander>
-                                <Button flat>Read</Button>
+                                <Button flat onClick={this.readBook(book)}>Read</Button>
                                 <Button flat>Delete</Button>
                             </CardActions>
                             <CardText expandable>
