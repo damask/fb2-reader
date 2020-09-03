@@ -34,7 +34,7 @@ export function addBook(book) {
 }
 
 export function bookExists(book) {
-    return db.count(BOOKS, book.hashHex );
+    return db.count(BOOKS, book.hashHex);
 }
 
 export function addSection(section) {
@@ -50,4 +50,11 @@ export function getAllBooks() {
         return db.getAll(BOOKS);
     }
     return openedDb.then(() => db.getAll(BOOKS));
+}
+
+export function getBook(hash) {
+    if (db) {
+        return db.get(BOOKS, hash);
+    }
+    return openedDb.then(() => db.get(BOOKS, hash));
 }
