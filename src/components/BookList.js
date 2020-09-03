@@ -35,9 +35,6 @@ export class BookList extends PureComponent {
             this.state.adding = false;
             this.forceUpdate();
         });
-        Events.on(Events.BOOK_ALREADY_ADDED).do(book => {
-            //TODO Toast
-        });
     }
 
     async componentDidMount() {

@@ -3,13 +3,14 @@ import './App.css';
 
 /* eslint-disable react/no-array-index-key */
 import { PureComponent } from 'react';
-import { Button, DialogContainer, NavigationDrawer, SVGIcon } from 'react-md';
+import {Snackbar, Button, DialogContainer, NavigationDrawer, SVGIcon } from 'react-md';
 
 import menu from './icons/menu.svg';
 import arrowBack from './icons/arrow_back.svg';
 import inboxListItems from './constants/inboxListItems';
 import { loremIpsum } from 'lorem-ipsum';
 import { BookList } from './components/BookList';
+import * as Events from "./events";
 
 export default class App extends PureComponent {
   constructor() {
@@ -28,12 +29,32 @@ export default class App extends PureComponent {
     });
 
     this.state = {
+      toasts: [],
       renderNode: null,
       visible: true,
       key: inboxListItems[0].key,
       page: inboxListItems[0].primaryText,
     };
+
+    Events.on(Events.BOOK_ALREADY_ADDED).do(event => {
+      const book = event.detail.book;
+      debugger
+      this.addToast(`Book "${book.title.toUpperCase()}" has been added earlier!`);
+    });
   }
+
+  addToast = (text, action, autohide = true) => {
+    this.setState((state) => {
+      const toasts = state.toasts.slice();
+      toasts.push({ text, action });
+      return { toasts, autohide };
+    });
+  }
+
+  dismissToast = () => {
+    const [, ...toasts] = this.state.toasts;
+    this.setState({ toasts });
+  };
 
   setPage = (key, page) => {
     this.navItems = this.navItems.map((item) => {
@@ -56,7 +77,7 @@ export default class App extends PureComponent {
   };
 
   render() {
-    const { visible, page, renderNode } = this.state;
+    const { visible, page, renderNode, toasts } = this.state;
     return (
         <div>
           <DialogContainer
@@ -99,6 +120,13 @@ export default class App extends PureComponent {
               }
 
             </NavigationDrawer>
+            <Snackbar
+                id="example-snackbar"
+                toasts={toasts}
+                autohide={true}
+                onDismiss={this.dismissToast}
+                autohideTimeout={4000}
+            />
           </DialogContainer>
         </div>
     );
