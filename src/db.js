@@ -58,3 +58,14 @@ export function getBook(hash) {
     }
     return openedDb.then(() => db.get(BOOKS, hash));
 }
+
+export function getRootSection() {
+    if (db) {
+        return db.getFromIndex(SECTIONS, 'parent', -1);
+    }
+    return openedDb.then(() => db.getFromIndex(SECTIONS, 'parent', -1));
+}
+
+export function getSections(parent) {
+    return db.getAllFromIndex(SECTIONS, 'parent', parent);
+}

@@ -44,7 +44,7 @@ export class Fb2Parser {
         const image = body.querySelector('image');
         const sections = body.querySelectorAll(':scope > section');
 
-        const id = await addSection({title: title?.textContent ?? null, image: image?.href ?? null, bookId });
+        const id = await addSection({title: title?.textContent ?? null, image: image?.href ?? null, parent: -1, bookId });
         for (let i = 0; i < sections.length; ++i) {
             await this.parseSection(sections[i], id, i);
         }
