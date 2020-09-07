@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e5eb399c77b5dabe51742aba274b5bc5",
+    "revision": "d513aa3e8ef771cd5d07f9f0acdebf89",
     "url": "/fb2-reader/index.html"
   },
   {
-    "revision": "352b37aeba63d7e7d95a",
+    "revision": "dc9720b49d0cd80a4273",
     "url": "/fb2-reader/static/css/main.2a881d77.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fb2-reader/static/js/2.d5c1ea87.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "352b37aeba63d7e7d95a",
-    "url": "/fb2-reader/static/js/main.d2bfed5f.chunk.js"
+    "revision": "dc9720b49d0cd80a4273",
+    "url": "/fb2-reader/static/js/main.6055a296.chunk.js"
   },
   {
     "revision": "f9d639825e5abdfb2e3b",
