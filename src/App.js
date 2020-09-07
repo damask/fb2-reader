@@ -1,9 +1,7 @@
-import React from 'react';
-import './App.css';
-
 /* eslint-disable react/no-array-index-key */
-import {PureComponent} from 'react';
-import {Snackbar, Button, DialogContainer, NavigationDrawer, SVGIcon} from 'react-md';
+import React, {PureComponent} from 'react';
+import './App.css';
+import {Button, DialogContainer, NavigationDrawer, Snackbar, SVGIcon} from 'react-md';
 
 import menu from './icons/menu.svg';
 import arrowBack from './icons/arrow_back.svg';
@@ -12,12 +10,7 @@ import {BookList} from './components/BookList';
 import * as Events from "./events";
 
 
-import {
-    Route,
-    Router,
-    Switch,
-    Redirect
-} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 
 import {createBrowserHistory} from 'history';
 import {Reader} from "./components/Reader";
@@ -90,9 +83,9 @@ export default class App extends PureComponent {
     };
 
     render() {
-        const {visible, page, renderNode, toasts} = this.state;
+        const {visible, renderNode, toasts} = this.state;
         return (
-            <Router history={history}>
+            <BrowserRouter history={history} basename={'/fb2-reader'}>
                 <div>
                     <DialogContainer
                         id="navigation-drawer-demo"
@@ -132,7 +125,7 @@ export default class App extends PureComponent {
                         />
                     </DialogContainer>
                 </div>
-            </Router>
+            </BrowserRouter>
         );
     }
 }
