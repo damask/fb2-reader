@@ -6,7 +6,7 @@ import {Button, DialogContainer, NavigationDrawer, Snackbar, SVGIcon} from 'reac
 import menu from './icons/menu.svg';
 import arrowBack from './icons/arrow_back.svg';
 import inboxListItems from './constants/inboxListItems';
-import {BookList} from './components/BookList';
+import { BookList } from './components/BookList';
 import * as Events from "./events";
 
 
@@ -16,7 +16,7 @@ import {createBrowserHistory} from 'history';
 import {Reader} from "./components/Reader";
 
 // создаём кастомную историю
-const history = createBrowserHistory()
+const history = createBrowserHistory();
 
 export default class App extends PureComponent {
     constructor() {

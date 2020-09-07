@@ -43,7 +43,7 @@ export class BookList extends PureComponent {
     }
 
     readBook = book => {
-        localStorage.setItem('READ_BOOK', book.hashHex);
+        this.props.history.push(`/read/${book.hashHex}`);
     }
 
     render() {
@@ -81,7 +81,7 @@ export class BookList extends PureComponent {
                                 avatar={<Avatar src={book.image} role="presentation" />}
                             />
                             <CardActions expander>
-                                <Button flat onClick={this.readBook(book)}>Read</Button>
+                                <Button flat onClick={() => this.readBook(book)}>Read</Button>
                                 <Button flat>Delete</Button>
                             </CardActions>
                             <CardText expandable>
@@ -94,3 +94,4 @@ export class BookList extends PureComponent {
         );
     }
 }
+
