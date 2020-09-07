@@ -1,7 +1,8 @@
 {
   "name": "fb2-reader-react",
+  "homepage": "http://damask.github.io/fb2-reader",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -17,6 +18,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -d -build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
