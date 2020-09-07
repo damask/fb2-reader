@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "def780550af83d87c6aafb75a33e4c88",
+    "revision": "e5eb399c77b5dabe51742aba274b5bc5",
     "url": "/fb2-reader/index.html"
   },
   {
-    "revision": "e70a299da5a822a64ff3",
+    "revision": "352b37aeba63d7e7d95a",
     "url": "/fb2-reader/static/css/main.2a881d77.chunk.css"
   },
   {
-    "revision": "b4eb6c4e6537565c8d4c",
-    "url": "/fb2-reader/static/js/2.7a537c82.chunk.js"
+    "revision": "2827bb58a3f34c753474",
+    "url": "/fb2-reader/static/js/2.d5c1ea87.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/fb2-reader/static/js/2.7a537c82.chunk.js.LICENSE.txt"
+    "url": "/fb2-reader/static/js/2.d5c1ea87.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e70a299da5a822a64ff3",
-    "url": "/fb2-reader/static/js/main.5923aa5c.chunk.js"
+    "revision": "352b37aeba63d7e7d95a",
+    "url": "/fb2-reader/static/js/main.d2bfed5f.chunk.js"
   },
   {
     "revision": "f9d639825e5abdfb2e3b",

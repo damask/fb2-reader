@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/fb2-reader/static/css/main.2a881d77.chunk.css",
-    "main.js": "/fb2-reader/static/js/main.5923aa5c.chunk.js",
-    "main.js.map": "/fb2-reader/static/js/main.5923aa5c.chunk.js.map",
+    "main.js": "/fb2-reader/static/js/main.d2bfed5f.chunk.js",
+    "main.js.map": "/fb2-reader/static/js/main.d2bfed5f.chunk.js.map",
     "runtime-main.js": "/fb2-reader/static/js/runtime-main.3e7da4f1.js",
     "runtime-main.js.map": "/fb2-reader/static/js/runtime-main.3e7da4f1.js.map",
-    "static/js/2.7a537c82.chunk.js": "/fb2-reader/static/js/2.7a537c82.chunk.js",
-    "static/js/2.7a537c82.chunk.js.map": "/fb2-reader/static/js/2.7a537c82.chunk.js.map",
+    "static/js/2.d5c1ea87.chunk.js": "/fb2-reader/static/js/2.d5c1ea87.chunk.js",
+    "static/js/2.d5c1ea87.chunk.js.map": "/fb2-reader/static/js/2.d5c1ea87.chunk.js.map",
     "index.html": "/fb2-reader/index.html",
-    "precache-manifest.de67b1856a007c9e2ea15e7085d5f178.js": "/fb2-reader/precache-manifest.de67b1856a007c9e2ea15e7085d5f178.js",
+    "precache-manifest.e2d4794ad5aeedd4078fadfc96e17f50.js": "/fb2-reader/precache-manifest.e2d4794ad5aeedd4078fadfc96e17f50.js",
     "service-worker.js": "/fb2-reader/service-worker.js",
     "static/css/main.2a881d77.chunk.css.map": "/fb2-reader/static/css/main.2a881d77.chunk.css.map",
-    "static/js/2.7a537c82.chunk.js.LICENSE.txt": "/fb2-reader/static/js/2.7a537c82.chunk.js.LICENSE.txt",
+    "static/js/2.d5c1ea87.chunk.js.LICENSE.txt": "/fb2-reader/static/js/2.d5c1ea87.chunk.js.LICENSE.txt",
     "static/media/arrow_back.svg": "/fb2-reader/static/media/arrow_back.98abdde4.svg",
     "static/media/menu.svg": "/fb2-reader/static/media/menu.204f61a1.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.3e7da4f1.js",
-    "static/js/2.7a537c82.chunk.js",
+    "static/js/2.d5c1ea87.chunk.js",
     "static/css/main.2a881d77.chunk.css",
-    "static/js/main.5923aa5c.chunk.js"
+    "static/js/main.d2bfed5f.chunk.js"
   ]
 }
