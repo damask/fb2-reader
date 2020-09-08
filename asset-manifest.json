@@ -1,24 +1,22 @@
 {
   "files": {
     "main.css": "/fb2-reader/static/css/main.68df3915.chunk.css",
-    "main.js": "/fb2-reader/static/js/main.b851ada3.chunk.js",
-    "main.js.map": "/fb2-reader/static/js/main.b851ada3.chunk.js.map",
+    "main.js": "/fb2-reader/static/js/main.7aac4f6c.chunk.js",
+    "main.js.map": "/fb2-reader/static/js/main.7aac4f6c.chunk.js.map",
     "runtime-main.js": "/fb2-reader/static/js/runtime-main.3e7da4f1.js",
     "runtime-main.js.map": "/fb2-reader/static/js/runtime-main.3e7da4f1.js.map",
-    "static/js/2.9a2422e8.chunk.js": "/fb2-reader/static/js/2.9a2422e8.chunk.js",
-    "static/js/2.9a2422e8.chunk.js.map": "/fb2-reader/static/js/2.9a2422e8.chunk.js.map",
+    "static/js/2.509ba38a.chunk.js": "/fb2-reader/static/js/2.509ba38a.chunk.js",
+    "static/js/2.509ba38a.chunk.js.map": "/fb2-reader/static/js/2.509ba38a.chunk.js.map",
     "index.html": "/fb2-reader/index.html",
-    "precache-manifest.ca2471d353b2120788497dffece9b302.js": "/fb2-reader/precache-manifest.ca2471d353b2120788497dffece9b302.js",
+    "precache-manifest.b56739a678de0df52243226056091982.js": "/fb2-reader/precache-manifest.b56739a678de0df52243226056091982.js",
     "service-worker.js": "/fb2-reader/service-worker.js",
     "static/css/main.68df3915.chunk.css.map": "/fb2-reader/static/css/main.68df3915.chunk.css.map",
-    "static/js/2.9a2422e8.chunk.js.LICENSE.txt": "/fb2-reader/static/js/2.9a2422e8.chunk.js.LICENSE.txt",
-    "static/media/arrow_back.svg": "/fb2-reader/static/media/arrow_back.98abdde4.svg",
-    "static/media/menu.svg": "/fb2-reader/static/media/menu.204f61a1.svg"
+    "static/js/2.509ba38a.chunk.js.LICENSE.txt": "/fb2-reader/static/js/2.509ba38a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3e7da4f1.js",
-    "static/js/2.9a2422e8.chunk.js",
+    "static/js/2.509ba38a.chunk.js",
     "static/css/main.68df3915.chunk.css",
-    "static/js/main.b851ada3.chunk.js"
+    "static/js/main.7aac4f6c.chunk.js"
   ]
 }
