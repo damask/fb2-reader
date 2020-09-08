@@ -29,7 +29,7 @@ export class Reader extends PureComponent {
                 { book &&
                     <div style={{maxWidth: 600}}>
                         <h1>{book.title}</h1>
-                        <div><img src={book.image} align="left" style={{maxHeight:200, margin: 4}}/>{book.annotation}</div>
+                        <div><img src={book.image} align="left" style={{maxHeight:200, margin: 4}} alt={book.title}/>{book.annotation}</div>
                         <h3>{topSection.title}</h3>
                     </div>
                 }

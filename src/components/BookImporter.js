@@ -15,6 +15,7 @@ export class BookImporter extends PureComponent {
 
     change = (event) => {
         const file = event.target.files[0];
+        // eslint-disable-next-line
         this.state.loading = true;
         const reader = new FileReader();
         reader.addEventListener('load', async event => {
@@ -34,6 +35,7 @@ export class BookImporter extends PureComponent {
             } catch (e) {
                 console.error('error when parsing', e);
             } finally {
+                // eslint-disable-next-line react/no-direct-mutation-state
                 this.state.loading = false;
             }
         });
