@@ -1,12 +1,9 @@
 /* eslint-disable react/no-array-index-key */
 import React, {PureComponent} from 'react';
 import './App.css';
-import {Button, DialogContainer, NavigationDrawer, Snackbar, SVGIcon} from 'react-md';
-
-import menu from './icons/menu.svg';
-import arrowBack from './icons/arrow_back.svg';
+import {Button, DialogContainer, FontIcon, NavigationDrawer, Snackbar} from 'react-md';
 import inboxListItems from './constants/inboxListItems';
-import { BookList } from './components/BookList';
+import {BookList} from './components/BookList';
 import * as Events from "./events";
 
 
@@ -94,8 +91,7 @@ export default class App extends PureComponent {
                         fullPage
                         focusOnMount={false}
                         onShow={this.handleShow}
-                        onHide={this.hide}
-                    >
+                        onHide={this.hide}>
                         <NavigationDrawer
                             renderNode={renderNode}
                             navItems={this.navItems}
@@ -105,8 +101,8 @@ export default class App extends PureComponent {
                             toolbarTitle="FB2 Reader"
                             toolbarActions={<Button icon onClick={this.hide}>close</Button>}
                             contentId="main-demo-content"
-                            temporaryIcon={<SVGIcon use={menu.url}/>}
-                            persistentIcon={<SVGIcon use={arrowBack.url}/>}
+                            temporaryIcon={<FontIcon>menu</FontIcon>}
+                            persistentIcon={<FontIcon>arrow_back</FontIcon>}
                             contentClassName="md-grid">
 
                             <Switch>
