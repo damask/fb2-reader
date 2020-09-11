@@ -12,24 +12,29 @@ export class Fb2Parser {
 
     constructor(xml) {
          this.xml = xml;
+         this.ordinal = 0;
     }
 
-    async parseSection(section, parentSectionId, sectionOrdinal) {
+    async parseSection(section, parentSectionId) {
         //  <p>, <image>, <poem>, <subtitle>, <cite>, <empty-line/>, <table>
 
         const title = section.querySelector('title');
         const image = section.querySelector('image');
         const elements = section.querySelectorAll(':scope > *');
 
-        const id = await addSection({parent: parentSectionId, ordinal: sectionOrdinal,
+        const id = await addSection({parent: parentSectionId, ordinal: this.ordinal++,
             title: title?.textContent ?? null, image: image?.href ?? null });
 
-        for (let i = 0; i < elements.length; ++i) {
-            const element = elements[i];
+        for (const element of elements) {
             if (element.tagName === 'section') {
-                await this.parseSection(element, id, i);
+                await this.parseSection(element, id);
             } else {
-                await addElement({tag: element.tagName, content: element.innerHTML, sectionId: id, ordinal: i })
+                await addElement({
+                    tag: element.tagName,
+                    content: element.innerHTML,
+                    sectionId: id,
+                    ordinal: this.ordinal++
+                })
             }
         }
     }
@@ -44,9 +49,10 @@ export class Fb2Parser {
         const image = body.querySelector('image');
         const sections = body.querySelectorAll(':scope > section');
 
-        const id = await addSection({title: title?.textContent ?? null, image: image?.href ?? null, parent: -1, bookId });
-        for (let i = 0; i < sections.length; ++i) {
-            await this.parseSection(sections[i], id, i);
+        const id = await addSection({title: title?.textContent ?? null, image: image?.href ?? null,
+            ordinal: this.ordinal++, parent: bookId });
+        for (const section of sections) {
+            await this.parseSection(section, id);
         }
     }
 

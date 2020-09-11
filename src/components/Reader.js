@@ -14,23 +14,31 @@ export class Reader extends PureComponent {
 
     async componentDidMount() {
         const book = await getBook(this.props.match.params.hash);
-        const topSection = await getRootSection(book.hasHex);
+        const topSection = await getRootSection(book.hashHex);
         this.state.book = book;
-        this.state.topSection =
+        this.state.topSection = topSection;
         this.state.children = await getSections(topSection.id);
         this.forceUpdate();
     }
 
+    // rendering algo
+    // get first non-section element - draw: sections and element
+    // get next sibling if there is - draw - intersection observer
+    // ..
+    // when no next sibling
+
     render() {
         const { book, topSection, children } = this.state;
-        debugger
         return (
             <div>
                 { book &&
-                    <div style={{maxWidth: 600}}>
-                        <h1>{book.title}</h1>
-                        <div><img src={book.image} align="left" style={{maxHeight:200, margin: 4}} alt={book.title}/>{book.annotation}</div>
-                        <h3>{topSection.title}</h3>
+                    <div>
+                        <h2>{book.title}</h2>
+                        <div  style={{maxWidth: 600}}>
+                            <div><img src={book.image} align="left" style={{maxHeight:200, margin: 8}} alt={book.title}/>{book.annotation}</div>
+                            <br/>
+                            <h3>{topSection.title}</h3>
+                        </div>
                     </div>
                 }
             </div>
