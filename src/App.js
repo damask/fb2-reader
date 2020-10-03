@@ -41,7 +41,6 @@ export default class App extends PureComponent {
 
         Events.on(Events.BOOK_ALREADY_ADDED).do(event => {
             const book = event.detail.book;
-            debugger
             this.addToast(`Book "${book.title.toUpperCase()}" has been added earlier!`);
         });
     }
