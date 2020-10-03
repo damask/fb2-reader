@@ -1,25 +1,21 @@
-import React from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {PureComponent} from "react";
 import {getBook, getRootSection, getSections} from "../db";
 
-export class Reader extends PureComponent {
-    constructor(props) {
-        super(props);
+export async function Reader(props) {
+    const hash = props.match.params.hash;
+    const [book, setBook] = useState(null);
+    const [topSection, setTopSection] = useState(null);
 
-        this.state = {
-            book: null,
-            topSection: null
-        };
-    }
-
-    async componentDidMount() {
-        const book = await getBook(this.props.match.params.hash);
-        const topSection = await getRootSection(book.hashHex);
-        this.state.book = book;
-        this.state.topSection = topSection;
-        this.state.children = await getSections(topSection.id);
-        this.forceUpdate();
-    }
+    useEffect( () => {
+        async function run() {
+            debugger
+            const book = await getBook(hash);
+            setBook(book);
+            setTopSection(await getRootSection(hash));
+        }
+        run();
+    }, [hash])
 
     // rendering algo
     // get first non-section element - draw: sections and element
@@ -27,21 +23,20 @@ export class Reader extends PureComponent {
     // ..
     // when no next sibling
 
-    render() {
-        const { book, topSection, children } = this.state;
-        return (
-            <div>
-                { book &&
+    debugger
+
+    return (
+        <div>
+            { book &&
+                <div>
+                    <h2>{book.title}</h2>
                     <div>
-                        <h2>{book.title}</h2>
-                        <div  style={{maxWidth: 600}}>
-                            <div><img src={book.image} align="left" style={{maxHeight:200, margin: 8}} alt={book.title}/>{book.annotation}</div>
-                            <br/>
-                            <h3>{topSection.title}</h3>
-                        </div>
+                        <div><img src={book.image} align="left" alt={book.title}/>{book.annotation}</div>
+                        <br/>
+                        <h3>{topSection.title}</h3>
                     </div>
-                }
-            </div>
-        )
-    }
+                </div>
+            }
+        </div>
+    )
 }

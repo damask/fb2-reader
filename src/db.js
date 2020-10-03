@@ -60,7 +60,10 @@ export function getBook(hash) {
 }
 
 export function getRootSection(hash) {
-    return db.getFromIndex(SECTIONS, 'parent', hash);
+    if (db) {
+        return db.getFromIndex(SECTIONS, 'parent', hash);
+    }
+    return openedDb.then(() => db.getFromIndex(SECTIONS, 'parent', hash));
 }
 
 export function getSections(parent) {
