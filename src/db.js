@@ -18,11 +18,13 @@ const openedDb = openDB('fb2-reader', 1, {
             keyPath: 'id', autoIncrement: true
         });
         sections.createIndex('parent', 'parent');
+        sections.createIndex('ordinal', 'ordinal');
 
         const elements = db.createObjectStore(ELEMENTS, {
             keyPath: ['sectionId', 'ordinal']
         });
         elements.createIndex('sectionId', 'sectionId');
+        elements.createIndex('ordinal', 'ordinal');
 
     }
 });
@@ -45,26 +47,29 @@ export function addElement(element) {
     return db.add(ELEMENTS, element);
 }
 
-export function getAllBooks() {
+function wait(f) {
     if (db) {
-        return db.getAll(BOOKS);
+        return f(db);
     }
-    return openedDb.then(() => db.getAll(BOOKS));
+    return openedDb.then(() => f(db));
 }
 
-export function getBook(hash) {
-    if (db) {
-        return db.get(BOOKS, hash);
-    }
-    return openedDb.then(() => db.get(BOOKS, hash));
-}
+export const getAllBooks = () => wait(db => db.getAll(BOOKS));
 
-export function getRootSection(hash) {
-    if (db) {
-        return db.getFromIndex(SECTIONS, 'parent', hash);
+export const getBook = hash => wait(db => db.get(BOOKS, hash));
+
+export const getRootSection = hash => wait(db => db.getFromIndex(SECTIONS, 'parent', hash));
+
+export const getChild = (parentSectionId, ordinal = 1) => wait(async db => {
+    let item = await db.getFromIndex(ELEMENTS, 'ordinal', ordinal);
+    if (!item) {
+        item = await db.getFromIndex(SECTIONS, 'ordinal', ordinal);
     }
-    return openedDb.then(() => db.getFromIndex(SECTIONS, 'parent', hash));
-}
+    if (!item || !(item.parent === parentSectionId  || item.sectionId === parentSectionId) ) {
+        return null;
+    }
+    return item;
+})
 
 export function getSections(parent) {
     return db.getAllFromIndex(SECTIONS, 'parent', parent);

@@ -1,11 +1,13 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {PureComponent} from "react";
 import {getBook, getRootSection, getSections} from "../db";
+import {Section} from "./Section";
 
 export function Reader(props) {
     const hash = props.match.params.hash;
     const [book, setBook] = useState(null);
     const [topSection, setTopSection] = useState(null);
+    const [sections, setSections] = useState([]);
 
     useEffect( () => {
         getBook(hash).then(setBook);
@@ -13,10 +15,17 @@ export function Reader(props) {
     }, [hash])
 
     // rendering algo
-    // get first non-section element - draw: sections and element
-    // get next sibling if there is - draw - intersection observer
-    // ..
-    // when no next sibling
+    // get first section
+    // section renders all its elements by ordinal
+    // when done - render next section
+
+    function fullyRendered() {
+        console.debug('rendered')
+    }
+
+    if (!book) {
+        return <div>loading...</div>
+    }
 
     if (book) {
         return (
@@ -26,12 +35,12 @@ export function Reader(props) {
                   <div>
                       <div><img src={book.image} align="left" alt={book.title}/>{book.annotation}</div>
                       <br/>
-                      <h3>{topSection.title}</h3>
+                      <Section section={topSection} ordinal={0} fullyRendered={fullyRendered} />
                   </div>
               </div>
           </div>
         )
     }
 
-    return <div>loading...</div>
+
 }
